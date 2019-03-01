@@ -33,8 +33,10 @@ fi
 ehco "Installing ZSH.."
 brew install zsh zsh-completions
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+brew install zsh-syntax-highlighting
 ehco "Done Installing ZSH."
 
-cp com.googlecode.iterm2.plist ~/Library/Preferences/
+cp -i com.googlecode.iterm2.plist ~/Library/Preferences/
+cp -i .zshrc ~/
 
 
