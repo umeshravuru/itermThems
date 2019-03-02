@@ -22,7 +22,7 @@ echo "Checking if iterm2 is installed?"
 isItemInstalle=`echo $TERM_PROGRAM`
 
 
-if [ ${#isItemInstalle} -gt 2 ]; then
+if [ $isItemInstalle == 'iTerm.app' ]; then
 	echo "iterm2 already installed, skipping instalation......"
 else 
 	echo "iterm2 not installed. Insatlling iterm2....."
@@ -33,6 +33,7 @@ fi
 ehco "Installing ZSH.."
 brew install zsh zsh-completions
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 brew install zsh-syntax-highlighting
 ehco "Done Installing ZSH."
 
