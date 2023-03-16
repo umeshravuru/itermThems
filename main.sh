@@ -26,7 +26,7 @@ if [ $isItemInstalle == 'iTerm.app' ]; then
 	echo "iterm2 already installed, skipping instalation......"
 else 
 	echo "iterm2 not installed. Insatlling iterm2....."
-	brew cask install iterm2
+	brew install --cask iterm2
 	echo "Done installing iterm2"
 fi
 
