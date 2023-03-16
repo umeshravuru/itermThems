@@ -12,7 +12,7 @@ if [ ${#isFound} -gt 2 ]; then
 	echo "Brew already installed, skipping instalation......"
 else 
 	echo "Brew not installed. Insatlling brew....."
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	echo "Done installing brew"
 fi
 
