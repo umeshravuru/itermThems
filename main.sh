@@ -16,7 +16,6 @@ fi
 
 # --- iTerm2 Installation ---
 echo "Checking if iTerm2 is installed..."
-# Check for the app in the standard Applications directory
 if [ -d "/Applications/iTerm.app" ]; then
     echo "iTerm2 is already installed. Skipping installation."
 else
@@ -33,41 +32,52 @@ echo "Done installing Powerline fonts."
 
 # --- Zsh and Oh My Zsh Setup ---
 echo "Installing Zsh and related tools..."
-brew install zsh zsh-completions zsh-syntax-highlighting
+brew install zsh zsh-completions zsh-syntax-highlighting fzf
 
 if [ -d "$HOME/.oh-my-zsh" ]; then
     echo "Oh My Zsh is already installed."
 else
-    # The official Oh My Zsh install script will handle the .zshrc backup and switch to zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
 fi
 
-echo "Installing Powerlevel9k theme..."
-git clone https://github.com/bhilburn/powerlevel9k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel9k
+echo "Installing Powerlevel10k theme..."
+if [ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k" ]; then
+    echo "Powerlevel10k already installed."
+else
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+fi
 
 echo "Installing zsh-autosuggestions plugin..."
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+if [ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ]; then
+    echo "zsh-autosuggestions already installed."
+else
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+fi
+
+echo "Installing zsh-syntax-highlighting plugin..."
+if [ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]; then
+    echo "zsh-syntax-highlighting already installed."
+else
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+fi
 
 echo "Done setting up Zsh."
 
 
 # --- Configuration ---
 echo "Copying configuration files..."
-# -i will prompt before overwriting
 cp -i com.googlecode.iterm2.plist ~/Library/Preferences/
 cp -i .zshrc ~/
+cp -i .p10k.zsh ~/
 
 echo ""
 echo "--------------------------------------------------"
 echo "✅ Setup complete!"
 echo ""
 echo "🔴 IMPORTANT FINAL STEP:"
-echo "To fix the symbols, you must change the font in iTerm2's settings:"
+echo "For the best experience, set your iTerm2 font to a Nerd Font:"
 echo "1. Open iTerm2."
-echo "2. Go to iTerm2 > Settings (or Preferences) > Profiles."
-echo "3. Select your profile (e.g., 'Default')."
-echo "4. Go to the 'Text' tab."
-echo "5. Under 'Font', click 'Change Font' (or 'Font')."
-echo "6. Select a font with 'for Powerline' or 'Nerd Font' in the name (e.g., 'MesloLG Nerd Font', 'Source Code Pro for Powerline')."
-echo "7. Restart iTerm2 for all changes to take effect."
-echo "--------------------------------------------------"%
+echo "2. Go to iTerm2 > Settings > Profiles > Text."
+echo "3. Under 'Font', select a Nerd Font (e.g. 'MesloLGS NF' or 'JetBrainsMono Nerd Font')."
+echo "4. Restart iTerm2."
+echo "--------------------------------------------------"
