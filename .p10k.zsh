@@ -175,7 +175,7 @@
   typeset -g POWERLEVEL9K_TIME_PREFIX='%244Fat '
 
   # ── Instant prompt ───────────────────────────────────────────────────────────
-  typeset -g POWERLEVEL9K_INSTANT_PROMPT=verbose
+  typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
   typeset -g POWERLEVEL9K_DISABLE_HOT_RELOAD=true
 
   (( ${#p10k_config_opts} )) && setopt ${p10k_config_opts[@]}
