@@ -24,27 +24,20 @@ else
     echo "Done installing iTerm2."
 fi
 
-# --- Install Powerline Fonts ---
-echo "Installing Powerline fonts..."
+# --- Install Nerd Fonts ---
+echo "Installing Nerd Fonts..."
 ./fonts_mine/install.sh
-echo "Done installing Powerline fonts."
+echo "Done installing fonts."
 
 
 # --- Zsh and Oh My Zsh Setup ---
 echo "Installing Zsh and related tools..."
-brew install zsh zsh-completions zsh-syntax-highlighting fzf
+brew install zsh zsh-completions zsh-syntax-highlighting fzf starship
 
 if [ -d "$HOME/.oh-my-zsh" ]; then
     echo "Oh My Zsh is already installed."
 else
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
-fi
-
-echo "Installing Powerlevel10k theme..."
-if [ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k" ]; then
-    echo "Powerlevel10k already installed."
-else
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 fi
 
 echo "Installing zsh-autosuggestions plugin..."
@@ -68,14 +61,15 @@ echo "Done setting up Zsh."
 echo "Copying configuration files..."
 cp -i com.googlecode.iterm2.plist ~/Library/Preferences/
 cp -i .zshrc ~/
-cp -i .p10k.zsh ~/
+mkdir -p ~/.config
+cp -i starship.toml ~/.config/starship.toml
 
 echo ""
 echo "--------------------------------------------------"
 echo "✅ Setup complete!"
 echo ""
 echo "🔴 IMPORTANT FINAL STEP:"
-echo "For the best experience, set your iTerm2 font to a Nerd Font:"
+echo "For icons to render correctly, set your iTerm2 font to a Nerd Font:"
 echo "1. Open iTerm2."
 echo "2. Go to iTerm2 > Settings > Profiles > Text."
 echo "3. Under 'Font', select a Nerd Font (e.g. 'MesloLGS NF' or 'JetBrainsMono Nerd Font')."

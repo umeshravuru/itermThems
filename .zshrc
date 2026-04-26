@@ -1,6 +1,6 @@
 export ZSH=~/.oh-my-zsh
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME=""  # disabled — using starship
 
 plugins=(
   git
@@ -47,8 +47,9 @@ echo -e "\033]6;1;bg;red;brightness;30\a"
 echo -e "\033]6;1;bg;green;brightness;30\a"
 echo -e "\033]6;1;bg;blue;brightness;60\a"
 
-# --- Powerlevel10k config ---
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+# --- Starship prompt ---
+export STARSHIP_CONFIG=~/.config/starship.toml
+eval "$(starship init zsh)"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/umeshravuru/.rd/bin:$PATH"

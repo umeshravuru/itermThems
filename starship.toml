@@ -1,0 +1,74 @@
+# Starship prompt config
+
+format = """
+$os\
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$python\
+$fill\
+$cmd_duration\
+$time\
+$line_break\
+$character"""
+
+[os]
+disabled = false
+style = "bold blue"
+
+[os.symbols]
+Macos = " "
+
+[directory]
+style = "bold cyan"
+truncation_length = 4
+truncate_to_repo = true
+read_only = " 󰌾"
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "bold red"
+format = '([\[$all_status$ahead_behind\]]($style) )'
+ahead = "⇡${count}"
+behind = "⇣${count}"
+staged = "+${count}"
+modified = "!${count}"
+untracked = "?${count}"
+conflicted = "~${count}"
+
+[nodejs]
+symbol = " "
+style = "bold green"
+format = "[$symbol$version]($style) "
+
+[python]
+symbol = " "
+style = "bold yellow"
+format = "[$symbol$version]($style) "
+
+[fill]
+symbol = " "
+
+[cmd_duration]
+min_time = 3_000
+style = "bold yellow"
+format = "took [$duration]($style) "
+
+[time]
+disabled = false
+style = "bold dimmed white"
+format = "[$time]($style)"
+time_format = "%H:%M"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold green)"
+
+[line_break]
+disabled = false
