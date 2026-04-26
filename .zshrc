@@ -66,7 +66,7 @@ plugins=(
   jsontools
   macports
   node 
-  osx 
+  macos
   sudo
   thor
   docker
@@ -107,7 +107,7 @@ source $ZSH/oh-my-zsh.sh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Reload the plugin to highlight the commands each time Iterm2 starts 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 ### VISUAL CUSTOMISATION ### 
