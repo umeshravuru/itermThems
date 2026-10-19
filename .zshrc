@@ -35,8 +35,7 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 # --- fzf ---
-[ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ] && source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
-[ -f /opt/homebrew/opt/fzf/shell/completion.zsh ]   && source /opt/homebrew/opt/fzf/shell/completion.zsh
+command -v fzf >/dev/null && eval "$(fzf --zsh)"
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --color=bg+:#1e2030,bg:#0d1117,spinner:#80aaff,hl:#80aaff,fg:#c0caf5,header:#80aaff,info:#7aa2f7,pointer:#ff9e64,marker:#9ece6a,fg+:#c0caf5,prompt:#7aa2f7,hl+:#80aaff"
 
 # --- iTerm2 shell integration ---
@@ -52,7 +51,7 @@ export STARSHIP_CONFIG=~/.config/starship.toml
 eval "$(starship init zsh)"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/umeshravuru/.rd/bin:$PATH"
+export PATH="$HOME/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 export NEXUS_PROXY_URL=https://artifact.intuit.com/artifactory/maven-proxy
